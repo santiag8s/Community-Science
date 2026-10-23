@@ -12,8 +12,14 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
+        /* Desplazamiento suave al hacer clic en los botones */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #f4f7f6;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            background-attachment: fixed;
             color: #2d3748;
             line-height: 1.7;
             padding: 20px;
@@ -27,7 +33,7 @@
         header {
             background: linear-gradient(135deg, #10ac84, #1dd1a1);
             color: white;
-            padding: 45px 30px;
+            padding: 40px 25px;
             text-align: center;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(16, 172, 132, 0.25);
@@ -35,25 +41,53 @@
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             opacity: 0.95;
         }
 
         .badge {
             background: #ffeaa7;
             color: #2d3436;
-            padding: 6px 16px;
+            padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: bold;
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 12px;
+        }
+
+        /* Interactive Navigation Buttons Header */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.25);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.25s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: white;
+            color: #10ac84;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .card {
@@ -63,6 +97,7 @@
             border-radius: 14px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border-left: 6px solid #10ac84;
+            position: relative;
         }
 
         .card h2 {
@@ -71,12 +106,6 @@
             margin-bottom: 20px;
             border-bottom: 2px solid #edf2f7;
             padding-bottom: 10px;
-        }
-
-        .card h3 {
-            color: #2b6cb0;
-            font-size: 1.2rem;
-            margin: 20px 0 10px 0;
         }
 
         .card p {
@@ -115,6 +144,7 @@
             padding: 20px;
             margin-top: 15px;
             border-left: 4px solid #319795;
+            margin-bottom: 15px;
         }
 
         .question {
@@ -126,7 +156,6 @@
 
         .answer {
             color: #4a5568;
-            margin-bottom: 15px;
         }
 
         ul {
@@ -136,13 +165,52 @@
 
         li {
             margin-bottom: 8px;
+            color: #4a5568;
+        }
+
+        /* Back to Top Button Styling */
+        .back-to-top-container {
+            text-align: right;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .back-to-top-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #f0f7f4;
+            color: #10ac84;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 1px solid #10ac84;
+        }
+
+        .back-to-top-btn:hover {
+            background-color: #10ac84;
+            color: white;
+            transform: translateY(-2px);
         }
 
         footer {
             text-align: center;
             padding: 25px;
-            color: #a0aec0;
+            color: #718096;
             font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            header { padding: 30px 15px; }
+            header h1 { font-size: 1.8rem; }
+            .card { padding: 20px; }
+            .nav-buttons { gap: 6px; }
+            .nav-btn { font-size: 0.8rem; padding: 6px 12px; }
         }
     </style>
 </head>
@@ -150,15 +218,23 @@
 
     <div class="container">
         
-        <header>
+        <header id="top">
             <h1>🌍 Community Science Research Project</h1>
             <p>Biodiversity Monitoring & Video Analysis via Chimp&See (Zooniverse)</p>
             <span class="badge">Environmental & Biological Science Research</span>
+
+            <!-- Botones Interactivos de Navegación -->
+            <nav class="nav-buttons">
+                <a href="#background" class="nav-btn">1. Background</a>
+                <a href="#methodology" class="nav-btn">2. Methodology</a>
+                <a href="#questions" class="nav-btn">3. Q&A Analysis</a>
+                <a href="#conclusion" class="nav-btn">4. Conclusion</a>
+            </nav>
         </header>
 
         <main>
-            <!-- SECTION 1: INTRODUCTION & BACKGROUND RESEARCH -->
-            <section class="card">
+            <!-- SECTION 1: BACKGROUND RESEARCH -->
+            <section class="card" id="background">
                 <h2>1. Background & Research Context</h2>
                 <p>
                     Community science (also known as citizen science) has revolutionized ecological research by enabling the public to collaborate with professional scientists in analyzing massive datasets. Traditional field biology often faces resource limitations, as researchers cannot spend thousands of continuous hours physically observing remote ecosystems without disrupting wildlife.
@@ -169,14 +245,18 @@
 
                 <!-- IMAGE PLACEHOLDER 1 -->
                 <div class="image-container">
-                    <!-- Replace 'image1.jpg' with your image path or URL -->
-                    <img src="image1.jpg" alt="Camera Trap Setup / Zooniverse Interface">
-                    <p class="image-caption">Figure 1: Camera trap interface and media classification workflow in Zooniverse.</p>
+                    <img src="image1.jpg" alt="Zooniverse Camera Trap Interface">
+                    <p class="image-caption">Figure 1: Zooniverse camera trap video interface showing a duiker observation in African forest habitat.</p>
+                </div>
+
+                <!-- BOTÓN DE VOLVER ARRIBA -->
+                <div class="back-to-top-container">
+                    <a href="#top" class="back-to-top-btn">⬆ Back to Top</a>
                 </div>
             </section>
 
-            <!-- SECTION 2: RESEARCH METHODOLOGY -->
-            <section class="card">
+            <!-- SECTION 2: METHODOLOGY -->
+            <section class="card" id="methodology">
                 <h2>2. Methodology & Data Collection</h2>
                 <p>
                     To ensure scientific accuracy and minimize observational bias, data collection followed a standardized protocol:
@@ -190,14 +270,18 @@
 
                 <!-- IMAGE PLACEHOLDER 2 -->
                 <div class="image-container">
-                    <!-- Replace 'image2.jpg' with your image path or URL -->
                     <img src="image2.jpg" alt="Wildlife Observation Footage">
                     <p class="image-caption">Figure 2: Example of wildlife footage classification and behavioral tracking.</p>
+                </div>
+
+                <!-- BOTÓN DE VOLVER ARRIBA -->
+                <div class="back-to-top-container">
+                    <a href="#top" class="back-to-top-btn">⬆ Back to Top</a>
                 </div>
             </section>
 
             <!-- SECTION 3: GUIDED QUESTIONS & ANALYSIS -->
-            <section class="card">
+            <section class="card" id="questions">
                 <h2>3. Investigation Questions & Analysis</h2>
 
                 <div class="q-and-a">
@@ -223,23 +307,32 @@
 
                 <!-- IMAGE PLACEHOLDER 3 -->
                 <div class="image-container">
-                    <!-- Replace 'image3.jpg' with your image path or URL -->
                     <img src="image3.jpg" alt="Data Analysis and Results">
                     <p class="image-caption">Figure 3: Summary of classification results and ecosystem monitoring metrics.</p>
                 </div>
+
+                <!-- BOTÓN DE VOLVER ARRIBA -->
+                <div class="back-to-top-container">
+                    <a href="#top" class="back-to-top-btn">⬆ Back to Top</a>
+                </div>
             </section>
 
-            <!-- SECTION 4: CONCLUSION & REFLECTION -->
-            <section class="card">
+            <!-- SECTION 4: CONCLUSION -->
+            <section class="card" id="conclusion">
                 <h2>4. Conclusion & Scientific Reflection</h2>
                 <p>
                     Participating in this community science project highlights the crucial intersection of technology, public engagement, and ecological conservation. By contributing systematic classifications, volunteers directly support peer-reviewed research aimed at protecting endangered species and preserving fragile ecosystems. Modern biology relies heavily on these collaborative digital frameworks to address global environmental challenges effectively.
                 </p>
+
+                <!-- BOTÓN DE VOLVER ARRIBA -->
+                <div class="back-to-top-container">
+                    <a href="#top" class="back-to-top-btn">⬆ Back to Top</a>
+                </div>
             </section>
         </main>
 
         <footer>
-            <p>Community Science Research Project | Hosted on GitHub Pages</p>
+            <p>Community Science Research Project | Hosted on GitHub Pages </p>
         </footer>
 
     </div>
